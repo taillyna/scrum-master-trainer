@@ -50,7 +50,7 @@ window.APP_I18N={
 "correct": "richtig",
 "wrong": "falsch",
 "not answered yet": "noch nicht beantwortet",
-"Answers can contain mistakes and outdated wording (Scrum Guide before 2020). The explanations were checked against the Scrum Guide 2020. If in doubt, check the Guide.": "Antworten können Fehler und veraltete Formulierungen enthalten (Scrum Guide vor 2020). Die Erklärungen wurden mit dem Scrum Guide 2020 abgeglichen. Im Zweifel prüfe im Guide nach.",
+"Explanations follow the Scrum Guide 2020. If in doubt, check the Guide.": "Die Erklärungen folgen dem Scrum Guide 2020. Im Zweifel prüfe im Guide nach.",
 "should have been selected": "hätte ausgewählt werden müssen",
 "Quit without a result?": "Ohne Ergebnis beenden?",
 "Quit": "Verlassen",
@@ -154,7 +154,7 @@ window.APP_I18N={
 "correct": "correcto",
 "wrong": "incorrecto",
 "not answered yet": "aún sin responder",
-"Answers can contain mistakes and outdated wording (Scrum Guide before 2020). The explanations were checked against the Scrum Guide 2020. If in doubt, check the Guide.": "Las respuestas pueden contener errores y formulaciones obsoletas (Scrum Guide anterior a 2020). Las explicaciones se contrastaron con el Scrum Guide 2020. Si tienes dudas, consulta la Guía.",
+"Explanations follow the Scrum Guide 2020. If in doubt, check the Guide.": "Las explicaciones siguen la Scrum Guide 2020. Si tienes dudas, consulta la Guía.",
 "should have been selected": "debía haberse seleccionado",
 "Quit without a result?": "¿Salir sin resultado?",
 "Quit": "Salir",
@@ -432,8 +432,7 @@ function viewHome(){
       {v:'all', t:t('Все', 'All'), n:Q.length},
       {v:'new', t:t('Новые', 'New'), n:fresh, off:!fresh},
       {v:'wrong', t:t('Ошибки', 'Mistakes'), n:bad, off:!bad},
-      {v:'flag', t:t('Отмеченные', 'Flagged '), n:flagged, off:!flagged},
-      {v:'warn', t:t('⚠️ Спорные', '⚠️ Disputed'), n:warnN, off:!warnN}
+      {v:'flag', t:t('Отмеченные', 'Flagged '), n:flagged, off:!flagged}
     ], s.src, function(v){ var had = !!toastEl || justHid; hideToast(); s.src = v; save(); render(); if (v === 'warn' && !had) toast(t('⚠️ Спорные: вопросы, где ключ ответа расходится со Scrum Guide 2020 или касается практик вне Scrum. Проверяй их по Guide.', '⚠️ Disputed: questions where the answer key conflicts with the Scrum Guide 2020 or covers practices outside Scrum. Check them against the Guide.'), app.querySelector('.seg[data-v="warn"]')); }),
     seg(t('Сколько', 'How many'), [{v:10,t:'10'},{v:20,t:'20'},{v:50,t:'50'},{v:'all',t:t('Все', 'All')}], s.count, function(v){ s.count = v; save(); render(); }),
     seg(t('Порядок вопросов', 'Question order'), [{v:'random',t:t('Вперемешку', 'Random')},{v:'seq',t:t('По номерам', 'By number')}], s.order, function(v){ s.order = v; save(); render(); }),
@@ -510,7 +509,7 @@ function viewHome(){
     h('div', {class:'panels'}, practice, exam),
     h('div', {class:'note'},
       installEvt ? null : installRow,
-      h('p', null, t('В ответах бывают ошибки и устаревшие формулировки (Scrum Guide до 2020). Объяснения сверены со Scrum Guide 2020. Если сомневаешься, проверь по Guide.', 'Answers can contain mistakes and outdated wording (Scrum Guide before 2020). The explanations were checked against the Scrum Guide 2020. If in doubt, check the Guide.')),
+      h('p', null, t('Объяснения следуют Scrum Guide 2020. Если сомневаешься, проверь по Guide.', 'Explanations follow the Scrum Guide 2020. If in doubt, check the Guide.')),
       h('p', null, t("Вопросы для тренировки основаны на Scrum Guide 2020 © Ken Schwaber и Jeff Sutherland, лицензия CC BY-SA 4.0; объяснения адаптированы из него. Переводы подготовлены с помощью Claude.", "Practice questions based on the Scrum Guide 2020 \u00a9 Ken Schwaber and Jeff Sutherland, licensed under CC BY-SA 4.0; explanations are adapted from it. Translations were prepared with Claude.")),
       h('p', null, t("Независимый учебный проект, не связан со Scrum.org и не одобрен Scrum.org. Все товарные знаки принадлежат их владельцам.", "Independent educational project, not affiliated with or endorsed by Scrum.org. All trademarks belong to their owners.")),
       backup));
