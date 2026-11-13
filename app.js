@@ -1,4 +1,4 @@
-window.PSM_I18N={
+window.APP_I18N={
 "de": {
 "Practice": "Übung",
 "Answer one question at a time and see right away where you went wrong.": "Beantworte eine Frage nach der anderen und sieh sofort, wo der Fehler liegt.",
@@ -34,7 +34,7 @@ window.PSM_I18N={
 "Reset progress": "Fortschritt zurücksetzen",
 "Save progress to file": "Fortschritt in Datei speichern",
 "Load progress from file": "Fortschritt aus Datei laden",
-"File psm1-progress.json saved.": "Datei psm1-progress.json gespeichert.",
+"File scrum-trainer-progress.json saved.": "Datei scrum-trainer-progress.json gespeichert.",
 "Could not save the file.": "Datei konnte nicht gespeichert werden.",
 "Progress loaded.": "Fortschritt geladen.",
 "This file does not look like saved progress.": "Diese Datei sieht nicht wie ein gespeicherter Fortschritt aus.",
@@ -138,7 +138,7 @@ window.PSM_I18N={
 "Reset progress": "Restablecer el progreso",
 "Save progress to file": "Guardar el progreso en un archivo",
 "Load progress from file": "Cargar el progreso desde un archivo",
-"File psm1-progress.json saved.": "Archivo psm1-progress.json guardado.",
+"File scrum-trainer-progress.json saved.": "Archivo scrum-trainer-progress.json guardado.",
 "Could not save the file.": "No se pudo guardar el archivo.",
 "Progress loaded.": "Progreso cargado.",
 "This file does not look like saved progress.": "Este archivo no parece un progreso guardado.",
@@ -210,8 +210,8 @@ window.PSM_I18N={
 };
 (function(){
 'use strict';
-var Q = window.PSM_DATA || [];
-var KEY = 'psm1-trainer-v1';
+var Q = window.APP_DATA || [];
+var KEY = 'scrum-trainer-v1';
 var EXAM_N = 80, EXAM_SEC = 3600, PASS = 0.85;
 var app = document.getElementById('app');
 
@@ -270,7 +270,7 @@ function splitRef(text){
   var m = /\s*\((Scrum Guide 2020[^)]*)\)\.?\s*$/.exec(text);
   return m ? {body: text.slice(0, m.index).trim(), ref: m[1]} : {body: text.trim(), ref: ''};
 }
-var I18N = window.PSM_I18N || {};
+var I18N = window.APP_I18N || {};
 var LANGS = ['en', 'de', 'es', 'ru'];
 var LN = {en:'English', ru:'Русский', de:'Deutsch', es:'Español'};
 var LOC = {en:'en-GB', ru:'ru-RU', de:'de-DE', es:'es-ES'};
@@ -370,7 +370,7 @@ function exportProgress(){
   try {
     var blob = new Blob([JSON.stringify(P)], {type:'application/json'});
     var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = 'psm1-progress.json';
+    a.href = URL.createObjectURL(blob); a.download = 'scrum-trainer-progress.json';
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(function(){ URL.revokeObjectURL(a.href); }, 2000);
     backupMsg = 'ok';
@@ -477,7 +477,7 @@ function viewHome(){
     h('button', {class:'btn small', type:'button', onclick:function(){ fileIn.click(); }}, t('Загрузить прогресс из файла', 'Load progress from file')),
     fileIn, resetBtn,
     backupMsg ? h('span', {class:'bmsg', role:'status'}, ({
-      ok: t('Файл psm1-progress.json сохранён.', 'File psm1-progress.json saved.'),
+      ok: t('Файл scrum-trainer-progress.json сохранён.', 'File scrum-trainer-progress.json saved.'),
       fail: t('Не удалось сохранить файл.', 'Could not save the file.'),
       loaded: t('Прогресс загружен.', 'Progress loaded.'),
       bad: t('Файл не похож на сохранённый прогресс.', 'This file does not look like saved progress.')

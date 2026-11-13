@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://mscrum.vercel.app/sitemap.xml
+Sitemap: https://scrum-master-trainer.vercel.app/sitemap.xml

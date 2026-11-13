@@ -2,7 +2,7 @@
 
 Free Scrum Master practice questions based on the [Scrum Guide 2020](https://scrumguides.org/).
 
-**Open the app: https://mscrum.vercel.app/**
+**Open the app: https://scrum-master-trainer.vercel.app/**
 
 ## Features
 
